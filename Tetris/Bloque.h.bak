@@ -1,0 +1,24 @@
+#ifndef Bloque_h
+#define Bloque_h
+
+#include "int.h"
+
+class Tablero;
+
+class Bloque {
+
+ public:
+    int x;
+    int y;
+
+ public:
+
+    /**
+     * @element-type Tablero
+     */
+    Tablero *myTablero;
+
+
+};
+
+#endif // Bloque_h
