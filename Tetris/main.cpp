@@ -4,6 +4,6 @@
 
 int main(int argc, char const *argv[])
 {
-	Figura asda(0);
+	Figura asda(8);
 	return 0;
 }
