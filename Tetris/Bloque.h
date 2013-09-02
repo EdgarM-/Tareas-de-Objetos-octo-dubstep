@@ -1,32 +1,44 @@
 #ifndef Bloque_h
 #define Bloque_h
-
-#include "int.h"
+#include <iostream>
+#include <algorithm>
+#include <cstdlib>
+#include <string>
+#include <vector>
 
 class Tablero;
 
 class Bloque {
 
- public:
-
-    virtual void setx();
-
-    virtual void sety();
-
-    virtual void getx();
-
-    virtual void gety();
-
- public:
+public:
     int x;
     int y;
 
- public:
+public:
 
     /**
      * @element-type Tablero
      */
     Tablero *myTablero;
+
+ public:
+
+ 	Bloque()
+ 		: x(0), y(0)
+ 	{ }
+ 	Bloque(int z, int w)
+ 		: x(z), y(w)
+ 	{ }
+
+    void setx(int);
+
+    void sety(int);
+
+    void print_xy() const;
+
+    ~Bloque()
+    { }
+ 
 
 
 };

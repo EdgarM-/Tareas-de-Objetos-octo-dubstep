@@ -2,7 +2,6 @@
 #define Tablero_h
 
 #include "Bloque.h"
-#include "Bloques.h"
 
 class Cola;
 
@@ -13,14 +12,9 @@ class Tablero {
     virtual void revisartablero();
 
  public:
-    Bloques matriz<Bloque>;
+   std::vector<std::vector<Bloque>> tab;
 
  public:
-
-    /**
-     * @element-type Bloque
-     */
-    Bloque myBloque;
 
     /**
      * @element-type Bloque

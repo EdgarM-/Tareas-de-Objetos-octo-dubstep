@@ -1,10 +1,11 @@
 // Demo de clase
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 #pragma once
 
-class persona
+class tetris
 {
   std::string m_nombre;
   short       m_edad = 0;

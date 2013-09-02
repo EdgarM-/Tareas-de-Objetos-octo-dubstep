@@ -1,7 +1,7 @@
 #ifndef Cola_h
 #define Cola_h
 
-#include "Figuras.h"
+#include "Figura.h"
 
 class Tablero;
 class Figura;
@@ -15,10 +15,10 @@ class Cola {
     virtual void push();
 
  public:
-    Figuras cola<Figura>;
+ 	std::vector<Figura> figuras;
 
  public:
-
+ 	 Cola();
     /**
      * @element-type Tablero
      */
