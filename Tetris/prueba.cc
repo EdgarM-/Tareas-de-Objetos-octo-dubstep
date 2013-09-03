@@ -8,8 +8,8 @@
 int main(int argc, char const *argv[])
 {
 	std::vector<int> prueb;
-	int x = sin(90);
-	std::cout <<"X = " << x <<'\n';
+	std::vector<std::vector<int>> prueb2;
+	std::cout <<"X = " << <<'\n';
 	//std::vector<int>::iterator it;
 	prueb.assign (1,1);
 	prueb.assign (1,2);

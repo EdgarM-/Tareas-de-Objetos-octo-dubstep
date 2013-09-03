@@ -88,18 +88,18 @@ class Figura {
     {
 		int a = -1;
 		int temp, temp2, temp3, temp4;
-		temp = bloques[0].b_x;
-    	bloques[0].b_x = a * bloques[0].b_y;
-    	bloques[0].b_y = temp;
-    	temp2 = bloques[1].b_x;
-    	bloques[1].b_x = a * bloques[1].b_y;
-    	bloques[1].b_y = temp2;
-    	temp3 = bloques[2].b_x;
-    	bloques[2].b_x = a*bloques[2].b_y;
-    	bloques[2].b_y = temp3;
-    	temp4 = bloques[3].b_x;
-    	bloques[3].b_x = a*bloques[3].b_y;
-    	bloques[3].b_y = temp4;
+		temp = bloques[0].getx();
+    	bloques[0].setx(a*bloques[0].gety());
+    	bloques[0].sety(temp);
+    	temp2 = bloques[1].getx();
+    	bloques[1].setx(a*bloques[1].gety());
+    	bloques[1].sety(temp2);
+    	temp3 = bloques[2].getx();
+    	bloques[2].setx(a*bloques[2].gety());
+    	bloques[2].sety(temp3);
+    	temp4 = bloques[3].getx();
+    	bloques[3].setx(a*bloques[3].gety());
+    	bloques[3].sety(temp4);
     	std::cout<<"Rote hacia la derecha :D"<<std::endl;
     }
 
@@ -107,19 +107,28 @@ class Figura {
     {
     	int a = -1;
 		int temp, temp2, temp3, temp4;
-		temp = bloques[0].b_x;
-    	bloques[0].b_x = bloques[0].b_y;
-    	bloques[0].b_y = a*temp;
-    	temp2 = bloques[1].b_x;
-    	bloques[1].b_x = bloques[1].b_y;
-    	bloques[1].b_y = a*temp2;
-    	temp3 = bloques[2].b_x;
-    	bloques[2].b_x = bloques[2].b_y;
-    	bloques[2].b_y = a*temp3;
-    	temp4 = bloques[3].b_x;
-    	bloques[3].b_x = bloques[3].b_y;
-    	bloques[3].b_y = a*temp4;
+		temp = bloques[0].getx();
+    	bloques[0].setx(bloques[0].gety());
+    	bloques[0].sety(a*temp);
+    	temp2 = bloques[1].getx();
+    	bloques[1].setx(bloques[1].gety());
+    	bloques[1].sety(a*temp2);
+    	temp3 = bloques[2].getx();
+    	bloques[2].setx(bloques[2].gety());
+    	bloques[2].sety(a*temp3);
+    	temp4 = bloques[3].getx();
+    	bloques[3].setx(bloques[3].gety());
+    	bloques[3].sety(a*temp4);
     	std::cout<<"Rote hacia la izquierda :D"<<std::endl;
+    }
+    void print()
+    {
+    	std::cout<<"---Figura---"<<std::endl;
+    	bloques[0].print_xy();
+    	bloques[1].print_xy();
+    	bloques[2].print_xy();
+    	bloques[3].print_xy();
+    	std::cout<<"------------"<<std::endl;
     }
 
     ~Figura()

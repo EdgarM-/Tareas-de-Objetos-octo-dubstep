@@ -2,42 +2,26 @@
 #define Cola_h
 
 #include "Figura.h"
-#include "Tablero.h"
-class Figura;
 
-class Cola {
 
- public:
- 	std::vector<Figura> figuras;
+class Cola {    
 
-    /**
-     * @element-type Tablero
-     */
-    Tablero *myTablero;
-    
-    Figura pop()
+ public:    
+    Figura* pop()
     {
     	srand (time(NULL));
-    	int random = rand() % 7;
-    	std::cout<< random << std::endl;
-        Figura lol(random);
-        return lol;
+        return new Figura(rand() % 7);
     }
 
-    void push();
+    Cola()
+ 	{
+        std::cout<<"Creaste le cola"<<std::endl;
+    }
 
- public:
- 	Cola()
- 	{}
-
- 	//Cola(Tablero tab)
- 	//:myTablero(tab)
- 	//{}
-
-    /**
-     * @element-type Figura
-     */
-    //Figura *myFigura;
+    ~Cola()
+    {
+        std::cout<<"Destruiste le cola"<<std::endl;
+    }
 };
 
 #endif // Cola_h

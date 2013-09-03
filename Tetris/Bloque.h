@@ -16,15 +16,7 @@ class Bloque {
 public:
     int b_x;
     int b_y;
-
 public:
-
-    /**
-     * @element-type Tablero
-     */
-    Tablero *myTablero;
-
- public:
 
  	Bloque()
  		: b_x(0), b_y(0)
@@ -42,17 +34,25 @@ public:
     {
     	b_y = y;
     }
+    int getx()
+    {
+    	return b_x;
+    }
+    int gety()
+    {
+    	return b_y;
+    }
 
     void print_xy() const
     {
-	std::cout << "X = " << b_x
-            << " Y = " << b_y
+		std::cout << "(" << b_x
+            << "," << b_y << ")"
             << std::endl;	
 	}
 
     ~Bloque()
     { }
- 
+ 	
 
 
 };
