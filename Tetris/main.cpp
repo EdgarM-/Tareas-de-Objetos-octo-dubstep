@@ -4,6 +4,7 @@
 
 int main(int argc, char const *argv[])
 {
-	Figura asda(8);
+	Cola paul;
+	paul.pop();
 	return 0;
 }

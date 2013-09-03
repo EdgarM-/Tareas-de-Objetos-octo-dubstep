@@ -4,8 +4,10 @@
 #include <algorithm>
 #include <cstdlib>
 #include <string>
-//#include <cassert>
+#include <cassert>
 #include <vector>
+#include <cmath>
+#include <ctime>
 
 class Tablero;
 

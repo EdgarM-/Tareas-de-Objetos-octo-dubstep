@@ -2,8 +2,8 @@
 CC = clang++
 #CC = g++-4.8
 
-tetris :	Bloque.o Cola.o Figura.o Tablero.o main.cpp
-	${CC}  -o tetris main.cpp Bloque.o Cola.o Figura.o Tablero.o -std=c++11
+tetris :	main.cpp
+	${CC}  -o tetris main.cpp -std=c++11
 
 Bloque.o : Bloque.cpp Bloque.h
 	${CC} -std=c++11 -c Bloque.cpp

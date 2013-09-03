@@ -2,6 +2,7 @@
 #define Tablero_h
 
 #include "Bloque.h"
+#include "Cola.h"
 
 class Cola;
 

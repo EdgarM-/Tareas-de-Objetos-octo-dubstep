@@ -3,10 +3,13 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
+#include <cmath>
 
 int main(int argc, char const *argv[])
 {
 	std::vector<int> prueb;
+	int x = sin(90);
+	std::cout <<"X = " << x <<'\n';
 	//std::vector<int>::iterator it;
 	prueb.assign (1,1);
 	prueb.assign (1,2);
