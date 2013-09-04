@@ -3,22 +3,20 @@
 
 #include "Bloque.h"
 
-class Bloque;
-
 class Figura {
 
  public:
-    std::vector<Bloque> bloques;
+    std::vector<Bloque> bloques;//Vector que contiene los bloques, que forman la figura
 
  public:
- 	Figura()
+ 	Figura()//Constructor por defecto
 		: bloques(4)
 	{ }
 
-	Figura(int x)
+	Figura(int x)//Constructor con un parametro, la figura depende del parametro
 	{
 		bloques.resize(4);
-		//assert(x < 0 && x > 6);
+		//Figuras
 		if (x == 0)
 		{
 			//Square
@@ -56,7 +54,7 @@ class Figura {
 		}
 	}
 
-    void rotar()
+    void rotar()//Rota la figura, se lleva al origen y despues de aplica matriz de rotacion simplificada, asumiendo giros de 90 grados
     {
     	int x,y;
     	x = bloques[0].getx();
@@ -81,23 +79,23 @@ class Figura {
     	bloques[3].setx(a*bloques[3].gety()+x);
     	bloques[3].sety(temp3+y);
     }
-    void moverder()
+    void moverder()//Se mueve la figura en X hacia la derecha
     {
     	for (auto& Bloque: bloques)
       		Bloque.setx(Bloque.getx()+1);
     }
-    void moverizq()
+    void moverizq()//Se mueve la figura en X hacia la izquierda
     {
     	for (auto& Bloque: bloques)
       		Bloque.setx(Bloque.getx()-1);
     }
-    void bajar()
+    void bajar()//Se mueve la figura en y hacia la abajo
     {
     	for (auto& Bloque: bloques)
-      		Bloque.sety(Bloque.gety()+1);
+      		Bloque.sety(Bloque.gety()-1);
     }
 
-    void print() const
+    void print() const//Se imprime la figura, imprimiendo todas las posiciones de los bloques contenidos
     {
     	std::cout<<"---Figura---"<<std::endl;
 		for (auto Bloque: bloques)
@@ -105,7 +103,16 @@ class Figura {
     	std::cout<<"------------"<<std::endl;
     }
 
-    ~Figura()
+    void F_setpos(int x, int y)//Se asigna una posicion a la figura, teniendo en cuenta que el x,y va a ser el centro de la figura
+    {
+    	for (auto& Bloque: bloques)
+		{
+      		Bloque.setx(Bloque.getx()+x);
+      		Bloque.sety(Bloque.gety()+y);
+		}
+    }
+
+    ~Figura()//Destructor de Figura
     { }
 
 };

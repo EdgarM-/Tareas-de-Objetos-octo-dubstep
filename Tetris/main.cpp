@@ -6,8 +6,9 @@ int main(int argc, char const *argv[])
 {
 	Cola asdad;
 	Tablero test(12,10,asdad);
-	test.t_print();
-	//Figura* lol3 = test.t_queue.pop();
+	//test.t_print();
+	test.jugar();
+	//Figura* lol3 = test.t_queue.pop();	
 	//lol3->print();
 
 	//Bloque lol5(5,5);

@@ -7,19 +7,17 @@
 class Cola {    
 
  public:    
-    Figura* pop()
+    Figura* pop()//Devuelve un puntero a figura, la figura que devuelve es random
     {
     	srand (time(NULL));
         return new Figura(rand() % 7);
     }
 
-    Cola()
+    Cola()//Constructor por defecto
  	{ }
 
-    ~Cola()
-    {
-        std::cout<<"Se destruyo la cola"<<std::endl;
-    }
+    ~Cola()//Destruye la cola
+    { }
 };
 
 #endif // Cola_h
