@@ -20,7 +20,7 @@ class Tablero {
     :rows{0},cols{0}
     {}
 
-    Tablero(size_t n_rows, size_t n_cols, Cola &Queue)//Inicializadora con 3 parametros, los 2 primeros indican Filas y columnas, el tercero es una referencia a uan Cola
+    Tablero(size_t n_rows, size_t n_cols, Cola &Queue)//Inicializadora con 3 parametros, los 2 primeros indican Filas y columnas, el tercero es una referencia a una Cola
     : tab{n_rows}, rows{n_rows}, cols{n_cols}, t_queue{Queue}
   	{
     	for (auto& row: tab)
@@ -37,10 +37,14 @@ class Tablero {
     	Figura* game_fig;
       	game_fig = t_queue.pop();
       	game_fig -> F_setpos(cols/2,rows-4);
+        game_fig -> print();
     	for (auto& b: game_fig -> bloques)
       	{	
-      		tab[b.gety()][b.getx()]=b;
+          //std::cout<<"1)   "<<b.gety()<<","<<b.getx()<<std::endl;
+      		tab[8][5]=b;
+          //std::cout<<"2)   "<<b.gety()<<","<<b.getx()<<std::endl;
       	}
+      std::cout<<"Tablero[cols/2][rows-4]"<<tab[cols/2][rows-4].b_x<<tab[cols/2][rows-4].b_y<<std::endl;
     }
     void revisarfila()//Revisa si la fila esta llena
     {
@@ -77,7 +81,6 @@ class Tablero {
       		{
       			block.print_xy();
       			std::cout<<"x= "<<j<<"y= "<<i<<std::endl;
-      			//std::cout<<"block == Nb: "<<(block == Bloque::Bloque(j,i) ? "True" : "False")<<std::endl;
       			if(block == Bloque::Bloque(j,i))
     					std::cout<<"X";
     			//else std::cout<<"-";
