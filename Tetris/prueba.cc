@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
 {
 	std::vector<int> prueb;
 	std::vector<std::vector<int>> prueb2;
-	std::cout <<"X = " << <<'\n';
+	std::cout <<"X = "<<'\n';
 	//std::vector<int>::iterator it;
 	prueb.assign (1,1);
 	prueb.assign (1,2);
@@ -25,6 +25,5 @@ int main(int argc, char const *argv[])
 	//std::cout<<prueb[2]<<std::endl;	
 	//std::cout<<prueb[3]<<std::endl;	
 	std::cout << "Size of prueb: " << int (prueb.size()) << '\n';
-
 	return 0;
 }

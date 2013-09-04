@@ -1,6 +1,7 @@
 #ifndef Bloque_h
 #define Bloque_h
 #include <iostream>
+#include <cstdio>
 #include <algorithm>
 #include <cstdlib>
 #include <string>
@@ -19,7 +20,7 @@ public:
 public:
 
  	Bloque()
- 		: b_x(0), b_y(0)
+ 		: b_x(-1), b_y(-1)
  	{ }
  	Bloque(int z, int w)
  		: b_x(z), b_y(w)
@@ -34,11 +35,16 @@ public:
     {
     	b_y = y;
     }
-    int getx()
+    void set_xy(int x, int y)
+    {
+    	b_x = x;
+    	b_y = y;
+    }
+    int getx() const
     {
     	return b_x;
     }
-    int gety()
+    int gety() const
     {
     	return b_y;
     }
@@ -48,6 +54,17 @@ public:
 		std::cout << "(" << b_x
             << "," << b_y << ")"
             << std::endl;	
+	}
+
+	void print_xy2() const
+    {
+		std::cout << "(" << b_x
+            << "," << b_y << ")";	
+	}
+
+	bool operator==(const Bloque& block2) const
+	{
+		return this->getx() == block2.getx() && this->gety() == block2.gety() ? true : false;
 	}
 
     ~Bloque()

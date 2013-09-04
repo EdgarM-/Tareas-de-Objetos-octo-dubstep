@@ -14,13 +14,11 @@ class Cola {
     }
 
     Cola()
- 	{
-        std::cout<<"Creaste le cola"<<std::endl;
-    }
+ 	{ }
 
     ~Cola()
     {
-        std::cout<<"Destruiste le cola"<<std::endl;
+        std::cout<<"Se destruyo la cola"<<std::endl;
     }
 };
 
