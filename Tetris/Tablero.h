@@ -13,7 +13,7 @@ class Tablero {
           if (col == 1)
             col = 0;
     }
-    void actualizar_F2(Figura* game_fig)
+    void actualizar_F2(Figura* game_fig)//Deja la figura lista por si se nesecita volver a actualizar la posicion
     {
       for (auto& b: game_fig -> bloques)
         { 
@@ -33,7 +33,7 @@ class Tablero {
     :rows{0},cols{0}
     {}
 
-    Tablero(size_t n_rows, size_t n_cols, Cola &Queue)//Inicializadora con 3 parametros, los 2 primeros indican Filas y columnas, el tercero es una referencia a uan Cola
+    Tablero(size_t n_rows, size_t n_cols, Cola &Queue)//Inicializadora con 3 parametros, los 2 primeros indican Filas y columnas, el tercero es una referencia a una Cola
     : tab{n_rows}, rows{n_rows}, cols{n_cols}, t_queue{Queue}
     {
       for (auto& row: tab)
@@ -49,7 +49,7 @@ class Tablero {
     }
     void devolver(Figura* game_fig)//Rota la figura teniendo en cuenta que no se valla a salir del tablero
     {
-
+      
     }
     void moverder(Figura* game_fig)//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
     {
@@ -68,7 +68,7 @@ class Tablero {
     {
       
         game_fig = t_queue.pop();
-        game_fig -> F_setpos(cols-4,rows-10);
+        game_fig -> F_setpos(cols-4,0);
       for (auto& b: game_fig -> bloques)
         { 
           tab[b.gety()][b.getx()] = 1;
@@ -109,24 +109,6 @@ class Tablero {
       }
     }
 
-    void jugar()//Se llama a las otras funciones desde aqui
-    {
-    	Figura* game_fig;
-    	std::cout<<"Bienvenido al Tetris"<<std::endl;
-    	game_fig = insertar_F(game_fig);
-    	game_fig->rotar();  	
-    	game_fig->bajar();  	
-    	game_fig->bajar();  	
-    	game_fig->moverder();  	
-    	game_fig->moverder();  	
-    	game_fig->moverder();  	
-    	t_print();
-    	std::cout<<"easdasd"<<std::endl;
-    	actualizar_F(game_fig);
-    	t_print();
-    	//t_print(); 	      
-    }
-
     void t_print() const//Imprime el tablero
   	{
 
@@ -135,9 +117,8 @@ class Tablero {
     	{
       		std::cout<<std::endl;
       		for (auto block : row)
-      		{
       			std::cout<<((block == 1 || block == 2) ? "X" : " ");
-      		}
+
     	}
     	std::cout<<std::endl<<"-----------"<<std::endl;
   	}

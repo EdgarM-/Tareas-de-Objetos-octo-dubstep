@@ -20,7 +20,7 @@ public:
  	Bloque()//Inicializadora por defecto
  		: b_x{-1}, b_y{-1}
  	{ }
- 	Bloque(int z, int w)//Incializadora con 2 parametros
+ 	Bloque(int z, int w)//Incializadora con 2 parametros que son enteros
  		: b_x{z}, b_y{w}
  	{ }
 
