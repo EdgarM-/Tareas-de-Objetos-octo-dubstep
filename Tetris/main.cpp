@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
 	test.t_print();
 
 	Stick lol;
-	std::cout<<lol<<std::endl;
+	std::cout<<test<<std::endl;
 
 	return 0;
 }

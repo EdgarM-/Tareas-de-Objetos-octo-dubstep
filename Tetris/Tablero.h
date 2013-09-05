@@ -148,3 +148,4 @@ std::ostream& operator<<(std::ostream& o , Tablero& Tablero)//Se sobrecarga el o
 }
 
 #endif // Tablero_h
+//vlc -V caca videofile

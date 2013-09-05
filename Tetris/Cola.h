@@ -7,6 +7,8 @@
 class Cola {    
 
  public:    
+ 	friend std::ostream& operator<<(std::ostream& o , Cola& C);//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
+ 	
     Figura* pop()//Devuelve un puntero a figura, la figura que devuelve es random
     {
     	srand (time(NULL));
@@ -19,5 +21,11 @@ class Cola {
     ~Cola()//Destruye la cola
     { }
 };
+
+std::ostream& operator<<(std::ostream& o , Cola& c)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
+{
+	o << "(" <<  ")";
+	return o;
+}
 
 #endif // Cola_h
