@@ -15,7 +15,7 @@ class Bloque {
 public:
     int b_x;//Posicion en x del bloque
     int b_y;//Posicion en y del bloque
-public:
+    friend std::ostream& operator<<(std::ostream& o , Bloque& Bloque);//Funcion amiga que ayuda a imprimir mas facilmente
 
  	Bloque()//Inicializadora por defecto
  		: b_x{-1}, b_y{-1}
@@ -65,5 +65,10 @@ public:
 
 
 };
+std::ostream& operator<<(std::ostream& o , Bloque& Bloque)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
+{
+	o << "(" << Bloque.b_x << "," << Bloque.b_y << ")";
+	return o;
+}
 
 #endif // Bloque_h

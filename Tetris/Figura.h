@@ -6,9 +6,11 @@
 class Figura {
 
  public:
+ 	friend std::ostream& operator<<(std::ostream& o , Figura& Figura);//Funcion amiga que ayuda a imprimir mas facilmente
     std::vector<Bloque> bloques;//Vector que contiene los bloques, que forman la figura
+    int f_x;
+    int f_y;
 
- public:
  	Figura()//Constructor por defecto
 		: bloques(4)
 	{ }
@@ -54,30 +56,17 @@ class Figura {
 		}
 	}
 
-    void rotar()//Rota la figura, se lleva al origen y despues de aplica matriz de rotacion simplificada, asumiendo giros de 90 grados
+    void rotar()//Rota la figura, se aplica matriz de rotacion simplificada, asumiendo giros de 90 grados
     {
-    	int x,y;
-    	x = bloques[0].getx();
-    	y = bloques[0].gety();
-		int a = -1;
 		for (auto& Bloque: bloques)
-		{
-      		Bloque.setx(Bloque.getx()-x);
-      		Bloque.sety(Bloque.gety()-y);
-		}
+			Bloque.set_xy(-Bloque.gety(),Bloque.getx());
+    }
+	
+	void devolver()//Rota la figura en setido contrario, se aplica matriz de rotacion simplificada, asumiendo giros de 90 grados
+    {
+		for (auto& Bloque: bloques)
+			Bloque.set_xy(Bloque.gety(),-Bloque.getx());
 
-		int temp, temp2, temp3;
-		bloques[0].setx(bloques[0].getx()+x);
-		bloques[0].sety(bloques[0].gety()+y);
-    	temp = bloques[1].getx();
-    	bloques[1].setx(a*bloques[1].gety()+x);
-    	bloques[1].sety(temp+y);
-    	temp2 = bloques[2].getx();
-    	bloques[2].setx(a*bloques[2].gety()+x);
-    	bloques[2].sety(temp2+y);
-    	temp3 = bloques[3].getx();
-    	bloques[3].setx(a*bloques[3].gety()+x);
-    	bloques[3].sety(temp3+y);
     }
     void moverder()//Se mueve la figura en X hacia la derecha
     {
@@ -92,7 +81,7 @@ class Figura {
     void bajar()//Se mueve la figura en y hacia la abajo
     {
     	for (auto& Bloque: bloques)
-      		Bloque.sety(Bloque.gety()-1);
+      		Bloque.sety(Bloque.gety()+1);
     }
 
     void print() const//Se imprime la figura, imprimiendo todas las posiciones de los bloques contenidos
@@ -116,5 +105,13 @@ class Figura {
     { }
 
 };
+std::ostream& operator<<(std::ostream& o , Figura& Figura)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
+{
+	o <<"---Figura---"<<std::endl;
+	for (auto Bloque: Figura.bloques)
+      	o <<"   "<< Bloque<<std::endl;
+    o << "------------";
+	return o;
+}
 
 #endif // Figura_h
