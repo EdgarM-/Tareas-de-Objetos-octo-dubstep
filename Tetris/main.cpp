@@ -18,5 +18,8 @@ int main(int argc, char const *argv[])
 	test.actualizar_F(game_fig);
 	test.t_print();
 
+	Stick lol;
+	std::cout<<lol<<std::endl;
+
 	return 0;
 }

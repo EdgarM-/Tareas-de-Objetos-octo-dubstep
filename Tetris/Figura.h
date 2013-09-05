@@ -114,4 +114,72 @@ std::ostream& operator<<(std::ostream& o , Figura& Figura)//Se sobrecarga el ope
 	return o;
 }
 
+class Square 
+	: public Figura
+{
+public:
+	Square()
+	{
+		bloques = {{0,0},{1,0},{0,1},{1,1}};
+	}
+};
+class Stick
+	:public Figura
+{
+public:
+	Stick()
+	{
+		bloques = {{0,0},{0,1},{0,2},{0,3}};
+	}
+};
+
+class Lblock
+	:public Figura
+{
+public:
+	Lblock()
+	{
+		bloques = {{0,0},{0,1},{0,2},{1,0}};
+	}
+};
+
+class Liblock
+	:public Figura
+{
+public:
+	Liblock()
+	{
+		bloques = {{0,0},{0,1},{0,2},{-1,0}};
+	}
+};
+
+class Zblock
+	:public Figura
+{
+public:
+	Zblock()
+	{
+		bloques = {{0,0},{1,0},{0,1},{-1,1}};
+	}
+};
+
+class Ziblock
+	:public Figura
+{
+public:
+	Ziblock()
+	{
+		bloques = {{0,0},{-1,0},{0,1},{1,1}};
+	}
+};
+
+class Tblock
+	:public Figura
+{
+public:
+	Tblock()
+	{
+		bloques = {{0,0},{1,1},{-1,0},{1,0}};
+	}
+};
 #endif // Figura_h
