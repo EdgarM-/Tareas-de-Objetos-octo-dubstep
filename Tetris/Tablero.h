@@ -13,9 +13,9 @@ class Tablero {
           if (col == 1)
             col = 0;
     }
-    void actualizar_F2(Figura* game_fig)//Deja la figura lista por si se nesecita volver a actualizar la posicion
+    void actualizar_F2(Figura game_fig)//Deja la figura lista por si se nesecita volver a actualizar la posicion
     {
-      for (auto& b: game_fig -> bloques)
+      for (auto& b: game_fig.bloques)
         { 
           tab[b.gety()][b.getx()] = 1;
         }
@@ -43,51 +43,49 @@ class Tablero {
               col = 0;
     }
 
-    void rotar(Figura* game_fig)//Rota la figura teniendo en cuenta que no se valla a salir del tablero
+    void rotar(Figura game_fig)//Rota la figura teniendo en cuenta que no se valla a salir del tablero
     {
 
     }
-    void devolver(Figura* game_fig)//Rota la figura teniendo en cuenta que no se valla a salir del tablero
+    void devolver(Figura game_fig)//Rota la figura teniendo en cuenta que no se valla a salir del tablero
     {
       
     }
-    void moverder(Figura* game_fig)//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
+    void moverder(Figura game_fig)//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
     {
 
     }
-    void moverizq(Figura* game_fig)//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
+    void moverizq(Figura game_fig)//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
     {
 
     }
-    void bajar(Figura* game_fig)//Baja la figura teniendo en cuenta que no se valla a salir del tablero o estrellar con otro bloque
+    void bajar(Figura game_fig)//Baja la figura teniendo en cuenta que no se valla a salir del tablero o estrellar con otro bloque
     {
 
     }
 
-    Figura* insertar_F(Figura* game_fig)//Inserta ficha aleatoria en el Tablero
+    Figura insertar_F(Figura game_fig)//Inserta ficha aleatoria en el Tablero
     {
       
         game_fig = t_queue.pop();
-        game_fig -> F_setpos(cols-4,0);
-      for (auto& b: game_fig -> bloques)
-        { 
+        game_fig.F_setpos(cols-4,0);
+        for (auto& b: game_fig.bloques)
           tab[b.gety()][b.getx()] = 1;
-        }
         return game_fig;
     }
 
-    void actualizar_F(Figura* game_fig)//Actualiza la posicion de la figura
+    void actualizar_F(Figura game_fig)//Actualiza la posicion de la figura
     {
-      for (auto& b: game_fig -> bloques)
+      for (auto& b: game_fig.bloques)
         { 
           tab[b.gety()][b.getx()] = 2;
         }
       limpiatablero();
       actualizar_F2(game_fig);
     }
-    void dejar_F(Figura* game_fig)//Deja la figura en la posicion
+    void dejar_F(Figura game_fig)//Deja la figura en la posicion
     {
-      for (auto& b: game_fig -> bloques)
+      for (auto& b: game_fig.bloques)
         { 
           tab[b.gety()][b.getx()] = 2;
         }

@@ -8,53 +8,12 @@ class Figura {
  public:
  	friend std::ostream& operator<<(std::ostream& o , Figura& Figura);//Funcion amiga que ayuda a imprimir mas facilmente
     std::vector<Bloque> bloques;//Vector que contiene los bloques, que forman la figura
-    int f_x;
-    int f_y;
+    std::string nombre;
 
  	Figura()//Constructor por defecto
 		: bloques(4)
 	{ }
 
-	Figura(int x)//Constructor con un parametro, la figura depende del parametro
-	{
-		bloques.resize(4);
-		//Figuras
-		if (x == 0)
-		{
-			//Square
-			bloques = {{0,0},{1,0},{0,1},{1,1}};
-		}
-		else if (x == 1)
-		{
-			//Up Stick
-			bloques = {{0,0},{0,1},{0,2},{0,3}};
-		}
-		else if (x == 2)
-		{
-			//L block
-			bloques = {{0,0},{0,1},{0,2},{1,0}};
-		}
-		else if (x == 3)
-		{
-			//Z block
-			bloques = {{0,0},{1,0},{0,1},{-1,1}};
-		}
-		else if (x == 4)
-		{
-			//L inverse block
-			bloques = {{0,0},{0,1},{0,2},{-1,0}};
-		}
-		else if (x == 5)
-		{
-			//Z inverse Block
-			bloques = {{0,0},{-1,0},{0,1},{1,1}};
-		}
-		else if (x == 6)
-		{
-			// T block
-			bloques = {{0,0},{1,1},{-1,0},{1,0}};
-		}
-	}
 
     void rotar()//Rota la figura, se aplica matriz de rotacion simplificada, asumiendo giros de 90 grados
     {
@@ -100,86 +59,138 @@ class Figura {
       		Bloque.sety(Bloque.gety()+y);
 		}
     }
+    void setname(std::string name)
+    {
+    	nombre = name;
+    }
+
 
     ~Figura()//Destructor de Figura
     { }
 
 };
-std::ostream& operator<<(std::ostream& o , Figura& Figura)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
+std::ostream& operator<<(std::ostream& o , Figura& Fig)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
 {
-	o <<"---Figura---"<<std::endl;
-	for (auto Bloque: Figura.bloques)
-      	o <<"   "<< Bloque<<std::endl;
-    o << "------------";
+	o << Fig.nombre <<std::endl;
 	return o;
 }
 
 class Square 
-	: public Figura
+	: public Figura //Herencia de Figura
 {
 public:
 	Square()
 	{
-		bloques = {{0,0},{1,0},{0,1},{1,1}};
+		setname("Square");
+		bloques = {{0,0},{1,0},{0,1},{1,1}};//Contructor por defecto
 	}
 };
 class Stick
-	:public Figura
+	:public Figura//Herencia de Figura
 {
 public:
 	Stick()
 	{
-		bloques = {{0,0},{0,1},{0,2},{0,3}};
+		setname("Stick");
+		bloques = {{0,0},{0,1},{0,2},{0,3}};//Contructor por defecto
 	}
 };
 
 class Lblock
-	:public Figura
+	:public Figura//Herencia de Figura
 {
 public:
 	Lblock()
 	{
-		bloques = {{0,0},{0,1},{0,2},{1,0}};
+		setname("Block L");
+		bloques = {{0,0},{0,1},{0,2},{1,0}};//Contructor por defecto
 	}
 };
 
 class Liblock
-	:public Figura
+	:public Figura//Herencia de Figura
 {
 public:
 	Liblock()
 	{
-		bloques = {{0,0},{0,1},{0,2},{-1,0}};
+		setname("Inverted Block L");
+		bloques = {{0,0},{0,1},{0,2},{-1,0}};//Contructor por defecto
 	}
 };
 
 class Zblock
-	:public Figura
+	:public Figura//Herencia de Figura
 {
 public:
 	Zblock()
 	{
-		bloques = {{0,0},{1,0},{0,1},{-1,1}};
+		setname("Block Z");
+		bloques = {{0,0},{1,0},{0,1},{-1,1}};//Contructor por defecto
 	}
 };
 
 class Ziblock
-	:public Figura
+	:public Figura//Herencia de Figura
 {
 public:
 	Ziblock()
 	{
-		bloques = {{0,0},{-1,0},{0,1},{1,1}};
+		setname("Inverted Block Z");
+		bloques = {{0,0},{-1,0},{0,1},{1,1}};//Contructor por defecto
 	}
 };
 
 class Tblock
-	:public Figura
+	:public Figura//Herencia de Figura
 {
 public:
 	Tblock()
 	{
-		bloques = {{0,0},{1,1},{-1,0},{1,0}};
+		setname("Block T");
+		bloques = {{0,0},{1,1},{-1,0},{1,0}};//Contructor por defecto
 	}
 };
+
+Figura randfig(int x)//Devuelve una figura dependiendo del x
+	{
+		Figura figran;
+		//Figuras
+		if (x == 0)
+		{
+			//Square
+			figran = Square::Square();
+		}
+		else if (x == 1)
+		{
+			//Up Stick
+			figran = Stick::Stick();
+		}
+		else if (x == 2)
+		{
+			//L block
+			figran = Lblock::Lblock();
+		}
+		else if (x == 3)
+		{
+			//Z block
+			figran = Zblock::Zblock();
+		}
+		else if (x == 4)
+		{
+			//L inverse block
+			figran = Liblock::Liblock();
+		}
+		else if (x == 5)
+		{
+			//Z inverse Block
+			figran = Ziblock::Ziblock();
+		}
+		else if (x == 6)
+		{
+			// T block
+			figran = Tblock::Tblock();
+		}
+
+		return figran;
+	}
 #endif // Figura_h
