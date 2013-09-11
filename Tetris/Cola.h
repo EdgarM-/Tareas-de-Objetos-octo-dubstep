@@ -17,7 +17,7 @@ class Cola {
  		srand (time(NULL));
         for (int i = 0; i < figuras.size(); ++i)
        	{ 
-	       	figuras[i] = randfig(rand() % 6);            
+	       	figuras[i] = randfig(rand() % 7);            
        	}
     }
 
