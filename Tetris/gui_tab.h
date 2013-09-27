@@ -1,19 +1,21 @@
 #pragma once
 #include <QtWidgets>
 #include "gui_fig.h"
+#include "ctrl.h"
 
-class tablero
+class G_tablero
   : public QGraphicsView
 {
   Q_OBJECT
 
+  Controller ctrl;
   QGraphicsScene scene;
   QTimer timer;
   Figura currentFig;
 
 public:
-  tablero();
-  virtual ~tablero() {}
+  G_tablero();
+  virtual ~G_tablero() {}
 
 protected:
   void keyPressEvent(QKeyEvent* event);

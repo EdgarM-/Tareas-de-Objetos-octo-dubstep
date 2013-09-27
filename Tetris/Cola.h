@@ -12,8 +12,7 @@ class Cola {
  	
     Cola()//Constructor por defecto
     	:figuras(16)
- 	{
- 		int x;		
+ 	{	
  		srand (time(NULL));
         for (int i = 0; i < figuras.size(); ++i)
        	{ 

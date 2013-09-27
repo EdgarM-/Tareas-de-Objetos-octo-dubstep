@@ -1,7 +1,7 @@
 #include <iostream>
 #include "gui_tab.h"
 
-tablero::tablero()
+G_tablero::G_tablero()
 {
   scene.setSceneRect(0, 0, 400, 500);
   setScene(&scene);
@@ -15,7 +15,7 @@ tablero::tablero()
 
 }
 
-void tablero::keyPressEvent(QKeyEvent *event)
+void G_tablero::keyPressEvent(QKeyEvent *event)
 {
 //  std::cout << "key: " << event->key() << std::endl;
 

@@ -1,12 +1,13 @@
 #pragma once
+
 #include <QGraphicsItem>
 #include <QKeyEvent>
 
-class Figura
+class G_Figura
   : public QGraphicsItem
 {
 public:
-    Figura();
+    G_Figura();
 
     QRectF boundingRect() const;
     QPainterPath shape() const;

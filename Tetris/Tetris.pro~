@@ -4,7 +4,7 @@
 QT += widgets
 
 TEMPLATE = app
-TARGET = t3tr1s
+TARGET = Tetris
 INCLUDEPATH += .
 
 QMAKE_CXX = clang++

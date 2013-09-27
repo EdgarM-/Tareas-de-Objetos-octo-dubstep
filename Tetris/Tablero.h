@@ -1,5 +1,4 @@
-#ifndef Tablero_h
-#define Tablero_h
+#pragma once
 
 #include "Bloque.h"
 #include "Cola.h"

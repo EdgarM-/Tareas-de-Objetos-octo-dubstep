@@ -4,26 +4,26 @@
 #include <QPainter>
 #include <QStyleOption>
 
-Figura::Figura()
+G_Figura::G_Figura()
 {
   setPos(posx,posy);
   setFlag(ItemIsFocusable);
   grabKeyboard();
 }
 
-QRectF Figura::boundingRect() const
+QRectF G_Figura::boundingRect() const
 {
   return QRectF(0,0,20,20);
 }
 
-QPainterPath Figura::shape() const
+QPainterPath G_Figura::shape() const
 {
     QPainterPath path;
     path.addRect(0, 0, 20, 20);
     return path;
 }
 
-void Figura::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
+void G_Figura::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
   painter->setBrush(QColor(5,5,210));
   QPen myPen(QColor(5,210,5));
@@ -35,17 +35,17 @@ void Figura::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 
 }
 
-void Figura::moveDerecha()
+void G_Figura::moveDerecha()
 {
   posx+=5;
 }
 
-void Figura::moveIzquierda()
+void G_Figura::moveIzquierda()
 {
   posx-=5;
 }
 
-void Figura::advance(int step)
+void G_Figura::advance(int step)
 {
   if (!step)
     return;
