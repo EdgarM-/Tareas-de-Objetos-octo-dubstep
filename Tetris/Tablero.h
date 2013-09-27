@@ -64,10 +64,16 @@ class Tablero {
 
     }
 
+    void nextfig()
+    {
+      t_queue.shownext();
+    }
+
     Figura insertar_F(Figura game_fig)//Inserta ficha aleatoria en el Tablero
     {
       
         game_fig = t_queue.pop();
+        t_queue.push();
         game_fig.F_setpos(cols-4,0);
         for (auto& b: game_fig.bloques)
           tab[b.gety()][b.getx()] = 1;
@@ -102,7 +108,7 @@ class Tablero {
     				++i;
             
         }
-        if(i == (int)cols)
+        if(i == (int)cols-1)
           std::cout<<"BOOM"<<std::endl;
       }
     }
@@ -115,7 +121,7 @@ class Tablero {
     	{
       		std::cout<<std::endl;
       		for (auto block : row)
-      			std::cout<<((block == 1 || block == 2) ? "X" : " ");
+      			std::cout<<((block == 1 || block == 2) ? "X" : "-");
 
     	}
     	std::cout<<std::endl<<"-----------"<<std::endl;
