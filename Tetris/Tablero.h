@@ -26,8 +26,8 @@ class Tablero {
     Cola t_queue;
     std::vector<std::vector<short>> tab;//Matriz de enteros que representan al Tablero
     std::vector<Bloque> bloques;
+    Figura fig_act;
     size_t rows,cols;//Indica el numero de filas y columnas del tablero
-    friend std::ostream& operator<<(std::ostream& o , Tablero& Tablero);//Funcion amiga que ayuda a imprimir mas facilmente
     Tablero()//Inicializadora por defecto
     :rows{0},cols{0}
     {}
@@ -42,48 +42,49 @@ class Tablero {
               col = 0;
     }
 
-    void rotar(Figura game_fig)//Rota la figura teniendo en cuenta que no se valla a salir del tablero
+    void rotar()//Rota la figura teniendo en cuenta que no se valla a salir del tablero
     {
 
     }
-    void devolver(Figura game_fig)//Rota la figura teniendo en cuenta que no se valla a salir del tablero
+    void devolver()//Rota la figura teniendo en cuenta que no se valla a salir del tablero
     {
       
     }
-    void moverder(Figura game_fig)//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
+    void moverder()//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
     {
 
     }
-    void moverizq(Figura game_fig)//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
+    void moverizq()//Mueve la figura teniendo en cuenta que no se valla a salir del tablero
     {
 
     }
-    void bajar(Figura game_fig)//Baja la figura teniendo en cuenta que no se valla a salir del tablero o estrellar con otro bloque
+    void bajar()//Baja la figura teniendo en cuenta que no se valla a salir del tablero o estrellar con otro bloque
     {
 
     }
 
-    void nextfig()
-    {
-      t_queue.shownext();
-    }
+   // void nextfig()
+   // {
+   //   t_queue.shownext();
+//    }
 
-    Figura insertar_F(Figura game_fig)//Inserta ficha aleatoria en el Tablero
+
+
+    Figura insertar_F()//Inserta ficha aleatoria en el Tablero
     {
-      
-        game_fig = t_queue.pop();
+        fig_act = t_queue.pop();
+        fig_act.F_setpos(0,0);
         t_queue.push();
-        game_fig.F_setpos(cols-4,0);
-        for (auto& b: game_fig.bloques)
-          tab[b.gety()][b.getx()] = 1;
-        return game_fig;
+        for (auto& b: fig_act.bloques)
+          tab[b.gety()+fig_act.y][b.getx()+fig_act.x] = 1;
+        return fig_act;
     }
 
     void actualizar_F(Figura game_fig)//Actualiza la posicion de la figura
     {
       for (auto& b: game_fig.bloques)
         { 
-          tab[b.gety()][b.getx()] = 2;
+          tab[b.gety()+fig_act.y][b.getx()+fig_act.x] = 2;
         }
       limpiatablero();
       actualizar_F2(game_fig);
@@ -92,7 +93,7 @@ class Tablero {
     {
       for (auto& b: game_fig.bloques)
         { 
-          tab[b.gety()][b.getx()] = 2;
+          tab[b.gety()+fig_act.y][b.getx()+fig_act.x] = 2;
         }
     }
     void revisarfila()//Revisa si la fila esta llena
@@ -107,24 +108,24 @@ class Tablero {
     				++i;
             
         }
-        if(i == (int)cols-1)
-          std::cout<<"BOOM"<<std::endl;
+        //if(i == (int)cols-1)
+          //std::cout<<"BOOM"<<std::endl;
       }
     }
 
-    void t_print() const//Imprime el tablero
-  	{
+   //  void t_print() const//Imprime el tablero
+  	// {
 
-      std::cout<<"---Tetris---"<<std::endl;
-    	for(auto row: tab) 
-    	{
-      		std::cout<<std::endl;
-      		for (auto block : row)
-      			std::cout<<((block == 1 || block == 2) ? "X" : "-");
+   //    std::cout<<"---Tetris---"<<std::endl;
+   //  	for(auto row: tab) 
+   //  	{
+   //    		std::cout<<std::endl;
+   //    		for (auto block : row)
+   //    			std::cout<<((block == 1 || block == 2) ? "X" : "-");
 
-    	}
-    	std::cout<<std::endl<<"-----------"<<std::endl;
-  	}
+   //  	}
+   //  	std::cout<<std::endl<<"-----------"<<std::endl;
+  	// }
 
     ~Tablero()//Destructor de Tablero
     { }
@@ -133,22 +134,4 @@ class Tablero {
 
 
 };
-
-std::ostream& operator<<(std::ostream& o , Tablero& Tablero)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
-{
-  o<<"---Tetris---"<<std::endl;
-  for(auto row: Tablero.tab) 
-  {
-      o<<std::endl;
-      for (auto block : row)
-      {
-        o<<((block == 1 || block == 2) ? "X" : " ");
-      }
-  }
-  o<<std::endl;
-  o<<"-----------"<<std::endl;
-  return o;
-}
-
-#endif // Tablero_h
 //vlc -V caca videofile

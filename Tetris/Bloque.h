@@ -15,7 +15,6 @@ class Bloque {
 public:
     int b_x;//Posicion en x del bloque
     int b_y;//Posicion en y del bloque
-    friend std::ostream& operator<<(std::ostream& o , Bloque& Bloque);//Funcion amiga que ayuda a imprimir mas facilmente
 
  	Bloque()//Inicializadora por defecto
  		: b_x{-1}, b_y{-1}
@@ -47,12 +46,12 @@ public:
     	return b_y;
     }
 
-    void print_xy() const//Imprime el x y el y del bloque
-    {
-		std::cout << "(" << b_x
-            << "," << b_y << ")"
-            << std::endl;	
-	}
+   // void print_xy() const//Imprime el x y el y del bloque
+   // {
+//		std::cout << "(" << b_x
+ //           << "," << b_y << ")"
+ //           << std::endl;	
+//	}
 
 	bool operator==(const Bloque& block2) const//Se sobrecarga el operador == para poder comparar dos bloques, se usa una expresion ternaria para eso.
 	{
@@ -65,10 +64,6 @@ public:
 
 
 };
-std::ostream& operator<<(std::ostream& o , Bloque& Bloque)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
-{
-	o << "(" << Bloque.b_x << "," << Bloque.b_y << ")";
-	return o;
-}
+
 
 #endif // Bloque_h

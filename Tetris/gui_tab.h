@@ -8,12 +8,12 @@ class G_tablero
 {
   Q_OBJECT
 
-  Controller ctrl;
   QGraphicsScene scene;
   QTimer timer;
-  Figura currentFig;
+  G_Figura currentFig;
 
 public:
+  Controller ctrl;
   G_tablero();
   virtual ~G_tablero() {}
 

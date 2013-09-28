@@ -8,15 +8,57 @@ class Cola {
 
  public:    
     std::vector<Figura> figuras;
- 	friend std::ostream& operator<<(std::ostream& o , Cola& C);//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
  	
+    Figura randomfigura(int x)//Devuelve una figura dependiendo del x
+    {
+        Figura figran;
+        //Figuras
+        if (x == 0)
+        {
+            //Square
+            figran = Square::Square();
+        }
+        else if (x == 1)
+        {
+            //Up Stick
+            figran = Stick::Stick();
+        }
+        else if (x == 2)
+        {
+            //L block
+            figran = Lblock::Lblock();
+        }
+        else if (x == 3)
+        {
+            //Z block
+            figran = Zblock::Zblock();
+        }
+        else if (x == 4)
+        {
+            //L inverse block
+            figran = Liblock::Liblock();
+        }
+        else if (x == 5)
+        {
+            //Z inverse Block
+            figran = Ziblock::Ziblock();
+        }
+        else if (x == 6)
+        {
+            // T block
+            figran = Tblock::Tblock();
+        }
+
+        return figran;
+    }
+
     Cola()//Constructor por defecto
     	:figuras(16)
  	{	
  		srand (time(NULL));
-        for (int i = 0; i < figuras.size(); ++i)
+        for (int i = 0; i < (int)figuras.size(); ++i)
        	{ 
-	       	figuras[i] = randfig(rand() % 7);            
+	       	figuras[i] = randomfigura(rand() % 7);            
        	}
     }
 
@@ -24,7 +66,7 @@ class Cola {
     {
         Figura tmp;
         tmp = figuras.front();
-        for (int i = 0; i < figuras.size()-1; ++i)
+        for (int i = 0; i < (int)figuras.size()-1; ++i)
         	figuras.at(i) = figuras.at(i+1);
         figuras.back() = tmp;
     }
@@ -35,23 +77,12 @@ class Cola {
         return figuras[0];
     }
 
-    void shownext()
-    {
-    	std::cout<<"La siguiente figura es: "<<figuras[1]<<std::endl;
-    }
+  //  void shownext()
+  //  {
+   // 	std::cout<<"La siguiente figura es: "<<figuras[1]<<std::endl;
+   // }
     ~Cola()//Destruye la cola
     { }
 };
-
-std::ostream& operator<<(std::ostream& o , Cola& c)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
-{
-	o <<"---Cola---"<<std::endl;
-	for (auto fig: c.figuras)
-	{
-      	o <<"   "<< fig <<std::endl;
-	}
-    o << "------------";
-	return o;
-}
 
 #endif // Cola_h

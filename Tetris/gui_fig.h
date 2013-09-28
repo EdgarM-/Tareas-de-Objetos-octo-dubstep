@@ -7,7 +7,7 @@ class G_Figura
   : public QGraphicsItem
 {
 public:
-    G_Figura();
+    G_Figura(int a, int b);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
@@ -21,7 +21,7 @@ protected:
     void advance(int step);
 
 private:
-  int posx = 100;
-  int posy = 100;
+  int posx;
+  int posy;
 };
 

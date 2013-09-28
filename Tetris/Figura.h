@@ -6,10 +6,9 @@
 class Figura {
 
  public:
- 	friend std::ostream& operator<<(std::ostream& o , Figura& Figura);//Funcion amiga que ayuda a imprimir mas facilmente
     std::vector<Bloque> bloques;//Vector que contiene los bloques, que forman la figura
     std::string nombre;
-
+    int x, y;
  	Figura()//Constructor por defecto
 		: bloques(4)
 	{ }
@@ -43,21 +42,18 @@ class Figura {
       		Bloque.sety(Bloque.gety()+1);
     }
 
-    void print() const//Se imprime la figura, imprimiendo todas las posiciones de los bloques contenidos
-    {
-    	std::cout<<"---Figura---"<<std::endl;
-		for (auto Bloque: bloques)
-      		Bloque.print_xy();
-    	std::cout<<"------------"<<std::endl;
-    }
+   // void print() const//Se imprime la figura, imprimiendo todas las posiciones de los bloques contenidos
+    //{
+    //	std::cout<<"---Figura---"<<std::endl;
+	//	for (auto Bloque: bloques)
+      //		Bloque.print_xy();
+    	//std::cout<<"------------"<<std::endl;
+    //}
 
-    void F_setpos(int x, int y)//Se asigna una posicion a la figura, teniendo en cuenta que el x,y va a ser el centro de la figura
+    void F_setpos(int a, int b)//Se asigna una posicion a la figura
     {
-    	for (auto& Bloque: bloques)
-		{
-      		Bloque.setx(Bloque.getx()+x);
-      		Bloque.sety(Bloque.gety()+y);
-		}
+    	x = a;
+		y = b;
     }
     void setname(std::string name)
     {
@@ -69,11 +65,6 @@ class Figura {
     { }
 
 };
-std::ostream& operator<<(std::ostream& o , Figura& Fig)//Se sobrecarga el operador<< para poder imprimir el objeto mas facilmente
-{
-	o << Fig.nombre <<std::endl;
-	return o;
-}
 
 class Square 
 	: public Figura //Herencia de Figura
@@ -82,7 +73,7 @@ public:
 	Square()
 	{
 		setname("Square");
-		bloques = {{0,0},{1,0},{0,1},{1,1}};//Contructor por defecto
+		bloques = {{0,0},{1,0},{0,-1},{1,-1}};//Contructor por defecto
 	}
 };
 class Stick
@@ -92,7 +83,7 @@ public:
 	Stick()
 	{
 		setname("Stick");
-		bloques = {{0,0},{0,1},{0,2},{0,3}};//Contructor por defecto
+		bloques = {{0,0},{0,-1},{0,-2},{0,-3}};//Contructor por defecto
 	}
 };
 
@@ -103,7 +94,7 @@ public:
 	Lblock()
 	{
 		setname("Block L");
-		bloques = {{0,0},{0,1},{0,2},{1,0}};//Contructor por defecto
+		bloques = {{0,0},{0,-1},{0,-2},{1,-2}};//Contructor por defecto
 	}
 };
 
@@ -114,7 +105,7 @@ public:
 	Liblock()
 	{
 		setname("Inverted Block L");
-		bloques = {{0,0},{0,1},{0,2},{-1,0}};//Contructor por defecto
+		bloques = {{1,0},{1,-1},{1,-2},{0,-2}};//Contructor por defecto
 	}
 };
 
@@ -125,7 +116,7 @@ public:
 	Zblock()
 	{
 		setname("Block Z");
-		bloques = {{0,0},{1,0},{0,1},{-1,1}};//Contructor por defecto
+		bloques = {{0,0},{1,0},{1,1},{2,1}};//Contructor por defecto
 	}
 };
 
@@ -136,7 +127,7 @@ public:
 	Ziblock()
 	{
 		setname("Inverted Block Z");
-		bloques = {{0,0},{-1,0},{0,1},{1,1}};//Contructor por defecto
+		bloques = {{0,1},{2,0},{1,1},{1,0}};//Contructor por defecto
 	}
 };
 
@@ -147,50 +138,9 @@ public:
 	Tblock()
 	{
 		setname("Block T");
-		bloques = {{0,0},{1,1},{-1,0},{1,0}};//Contructor por defecto
+		bloques = {{1,1},{1,2},{0,2},{1,3}};//Contructor por defecto
 	}
 };
 
-Figura randfig(int x)//Devuelve una figura dependiendo del x
-	{
-		Figura figran;
-		//Figuras
-		if (x == 0)
-		{
-			//Square
-			figran = Square::Square();
-		}
-		else if (x == 1)
-		{
-			//Up Stick
-			figran = Stick::Stick();
-		}
-		else if (x == 2)
-		{
-			//L block
-			figran = Lblock::Lblock();
-		}
-		else if (x == 3)
-		{
-			//Z block
-			figran = Zblock::Zblock();
-		}
-		else if (x == 4)
-		{
-			//L inverse block
-			figran = Liblock::Liblock();
-		}
-		else if (x == 5)
-		{
-			//Z inverse Block
-			figran = Ziblock::Ziblock();
-		}
-		else if (x == 6)
-		{
-			// T block
-			figran = Tblock::Tblock();
-		}
 
-		return figran;
-	}
 #endif // Figura_h

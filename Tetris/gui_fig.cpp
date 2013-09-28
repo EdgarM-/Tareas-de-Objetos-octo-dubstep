@@ -4,8 +4,10 @@
 #include <QPainter>
 #include <QStyleOption>
 
-G_Figura::G_Figura()
+G_Figura::G_Figura(int a, int b)
 {
+  posx = a;
+  posy = b;
   setPos(posx,posy);
   setFlag(ItemIsFocusable);
   grabKeyboard();

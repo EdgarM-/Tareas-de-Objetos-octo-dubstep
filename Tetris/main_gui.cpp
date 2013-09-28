@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
   QApplication app(argc, argv);
 
-  tablero tbl;
+  G_tablero tbl;
 
   return app.exec();
 }
